@@ -1,0 +1,37 @@
+version: '3'
+
+services:
+  mongo_db:
+    container_name: mongo_db_container
+    image: mongo:latest
+    restart: always
+    volume:
+      - mongo_db:/data/db
+
+  app:
+    build: .
+    ports:
+      - 4000:4000
+    environment:
+      PORT: 4000
+      DB_NAME: genaiecommerce
+      MONGO_DB_URL: mongodb://mongo_db:27017/genaiecommerce
+      JWT_SECRET_KEY: genaiecommercejwtsecretkey
+      SALT_ROUNDS: 10
+      JWT_REFRESH_SECRET_KEY: genaiecommercejwtrefreshsecretkey
+      JWT_TOKEN_EXPIRY: 48h
+      JWT_REFRESH_TOKEN_EXPIRY: 10d
+      JWT_OTP_SECRET_KEY: genaiecommercejwtotpsecretkey
+      JWT_OTP_TOKEN_EXPIRY: 300s
+      CORS_ORIGIN: "*"
+      EMAIL_HOST: smtp.gmail.com
+      EMAIL_USERNAME: email@gmail.com
+      EMAIL_PASSWORD: Password
+      EMAIL_SERVICE: gmail
+      BASE_URL: "http://localhost"
+      JWT_RESET_SECRET_KEY: genaiecommercejwtresetsecretkey
+      JWT_RESET_TOKEN_EXPIRY: 24h
+    depends_on:
+      - mongo_db
+volumes:
+  mongo_db: {}
