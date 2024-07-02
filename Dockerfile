@@ -3,15 +3,15 @@ FROM node:slim
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY ./package*.json .
+COPY ./package*.json /
 
 # COPY . .
 
-COPY ./src .
+COPY ./src /
 
-COPY ./public .
+COPY ./public /
 
-COPY ./.env .
+COPY ./.env /
 
 RUN npm install
 
