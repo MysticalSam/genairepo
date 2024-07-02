@@ -5,7 +5,7 @@ services:
     container_name: mongo_db_container
     image: mongo:latest
     restart: always
-    volume:
+    volumes:
       - mongo_db:/data/db
 
   app:
