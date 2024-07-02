@@ -3,17 +3,19 @@ FROM node:slim
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY ./package*.json /
+COPY ./package*.json /usr/src/app
 
 # COPY . .
 
-COPY ./src /
+COPY ./src /usr/src/app
 
-COPY ./public /
+COPY ./public /usr/src/app
 
-COPY ./.env /
+COPY ./.env /usr/src/app
 
 RUN npm install
+
+RUN ls
 
 EXPOSE 4000
 
