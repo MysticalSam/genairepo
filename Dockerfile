@@ -1,14 +1,18 @@
 FROM node:alpine
 
+# Create app directory
+RUN mkdir -p /usr/src/app
+
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+# Install app dependencies
+COPY package*.json /usr/src/app/
 
-COPY ./src ./
+COPY ./src /usr/src/app/
 
-COPY ./public ./
+COPY ./public /usr/src/app/
 
-COPY ./.env ./
+COPY ./.env /usr/src/app/
 
 RUN npm install
 
