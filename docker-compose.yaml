@@ -15,7 +15,7 @@ services:
     environment:
       PORT: 4000
       DB_NAME: genaiecommerce
-      MONGO_DB_URL: mongodb+srv://mysticalsam:K4gShXYXqmhmrmPG@cluster0.qk0yzih.mongodb.net
+      MONGO_DB_URL: mongodb://mongo_db:27017
       JWT_SECRET_KEY: genaiecommercejwtsecretkey
       SALT_ROUNDS: 10
       JWT_REFRESH_SECRET_KEY: genaiecommercejwtrefreshsecretkey
