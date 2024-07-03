@@ -38,13 +38,17 @@ const getProductById = asyncHandler(async (req, res) => {
 
 const addProducts = asyncHandler(async (req, res) => {
     const checkProducts = await Product.exists({ name: "Mens Cotton Jacket" })
-
+    console.log("First Step")
     if (checkProducts) {
+        console.log("2nd Step")
         throw new ApiError(400, "Products Already Exist");
     }
     const productsData = require('../config/db.products')
+    console.log("3rd Step")
     const response = await Product.insertMany(productsData)
+    console.log("4th Step")
     if (!response) {
+        console.log("6th Step")
         throw new ApiError(500, "Something Went Wrong While Adding Products");
     }
     return res.status(201).json(
